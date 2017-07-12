@@ -143,6 +143,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Demo\Main.cpp" />
+    <ClCompile Include="ECS\Components.cpp" />
+    <ClCompile Include="ECS\Components\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ECS\ComponentInterface.hpp" />

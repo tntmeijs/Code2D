@@ -1,12 +1,18 @@
 #ifndef COMPONENT_INTERFACE_HPP
 #define COMPONENT_INTERFACE_HPP
 
-class ComponentInterface
+namespace Code2D
 {
-public:
-	virtual ~ComponentInterface() {}
+	namespace ComponentType
+	{
+		class ComponentInterface
+		{
+		public:
+			virtual ~ComponentInterface() {}
 
-	virtual void Update() {}
-};
+			virtual void Update() {}
+		};
+	}
+}
 
 #endif
