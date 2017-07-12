@@ -20,19 +20,30 @@ namespace Code2D
 		~Components();
 
 		// Add a new component: GameObject.AddComponent(new [TYPE]);
-		void AddComponent(ComponentType::ComponentInterface* NewComponent);
+		void AddComponent(Component::ComponentInterface* NewComponent);
 
 		// Get the requested component, or 'nullptr' if the component is not available: GameObject.GetComponent<[TYPE]>();
 		template<typename T>
 		T* GetComponent();
 
-		// Remove a component: GameObject.RemoveComponent<[TYPE]>();
-		template<typename T>
-		bool RemoveComponent();
-
 	private:
-		std::unordered_map<const std::type_info*, ComponentType::ComponentInterface*> ComponentMap;
+		std::unordered_map<const std::type_info*, Component::ComponentInterface*> ComponentMap;
 	};
+
+	template<typename T>
+	inline T * Components::GetComponent()
+	{
+		if (ComponentMap.count(&typeid(T)) != 0)
+		{
+			// Component exists!
+			return static_cast<T*>(ComponentMap[&typeid(T)]);
+		}
+		else
+		{
+			// Could not find the requested components
+			return nullptr;
+		}
+	}
 }
 
 #endif

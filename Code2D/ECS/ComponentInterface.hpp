@@ -3,7 +3,7 @@
 
 namespace Code2D
 {
-	namespace ComponentType
+	namespace Component
 	{
 		class ComponentInterface
 		{

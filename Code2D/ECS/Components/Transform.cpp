@@ -1,25 +1,31 @@
-/*
-This component handles everything regarding transforms
-Even though almost every object will have this component,
-there might be cases in which it is not needed (e.g. managers)
-*/
+#include "Transform.hpp"
 
-#ifndef TRANSFORM_HPP
-#define TRANSFORM_HPP
-
-#include "../ComponentInterface.hpp"
+#include <iostream>
 
 namespace Code2D
 {
-	namespace ComponentType
+	namespace Component
 	{
-		class Transform : public ComponentInterface
+		Transform::Transform()
 		{
-		public:
+			std::cout << "Transform component created!" << std::endl;
 
-		private:
-		};
+			Position.x = 0.0f;
+			Position.y = 0.0f;
+
+			Size.x = 100.0f;
+			Size.y = 100.0f;
+		}
+
+		Transform::~Transform()
+		{
+			std::cout << "Transform component deleted!" << std::endl;
+		}
+
+		void Transform::SetPosition(float x, float y)
+		{
+			Position.x = x;
+			Position.y = y;
+		}
 	}
 }
-
-#endif

@@ -29,10 +29,13 @@
     <ClInclude Include="ECS\ComponentInterface.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EndUser\GameObject.hpp">
+    <ClInclude Include="ECS\Components.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ECS\Components.hpp">
+    <ClInclude Include="ECS\Components\Transform.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\GameObject.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
