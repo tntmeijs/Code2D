@@ -10,6 +10,7 @@ there might be cases in which it is not needed (e.g. managers)
 #include "../ComponentInterface.hpp"
 
 #include "glm/vec2.hpp"
+#include "glm/mat4x4.hpp"
 
 namespace Code2D
 {
@@ -19,12 +20,15 @@ namespace Code2D
 		{
 		public:
 			Transform();
-			~Transform();
+
+			void Update() {}
 
 			void SetPosition(float x, float y);
 
 			glm::vec2 Position;
 			glm::vec2 Size;
+
+			float RotationZ;
 
 		private:
 		};

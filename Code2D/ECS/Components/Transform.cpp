@@ -1,6 +1,5 @@
 #include "Transform.hpp"
-
-#include <iostream>
+#include "glm/glm.hpp"
 
 namespace Code2D
 {
@@ -8,18 +7,13 @@ namespace Code2D
 	{
 		Transform::Transform()
 		{
-			std::cout << "Transform component created!" << std::endl;
-
 			Position.x = 0.0f;
 			Position.y = 0.0f;
 
 			Size.x = 100.0f;
 			Size.y = 100.0f;
-		}
 
-		Transform::~Transform()
-		{
-			std::cout << "Transform component deleted!" << std::endl;
+			RotationZ = 0.0f;
 		}
 
 		void Transform::SetPosition(float x, float y)
