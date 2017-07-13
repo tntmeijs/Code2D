@@ -1,6 +1,7 @@
 #ifndef WINDOW_HPP
 #define WINDOW_HPP
 
+#include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
 namespace Code2D
@@ -8,13 +9,28 @@ namespace Code2D
 	class Window
 	{
 	public:
-		bool Initialize(short WindowWidth = 1280, short WindowHeight = 720);
+		Window(bool bFullscreen = false, short WindowWidth = 1280, short WindowHeight = 720, const char * Title = "Powered by Code2D!");
+		~Window();
+
+		bool GameShouldRun() const;
+		void ProcessInput() const;
+		void ShowFrame() const;
 
 	private:
+		static void ErrorCallback(int Error, const char * Description);
+
+		void SetWindowHints();
+
 		short WindowWidth;
 		short WindowHeight;
 
-		GLFWwindow * Window;
+		bool bFullscreen;
+
+		const char * Title;
+
+		const GLFWvidmode * Videomode;
+		GLFWmonitor * Monitor;
+		GLFWwindow * GameWindow;
 	};
 }
 

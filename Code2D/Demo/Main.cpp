@@ -4,5 +4,14 @@ int main(int argc, char * args[])
 {
 	Code2D::Window Window;
 
+	while (Window.GameShouldRun())
+	{
+		Window.ProcessInput();
+
+		// update
+
+		Window.ShowFrame();
+	}
+
 	return 0;
 }
