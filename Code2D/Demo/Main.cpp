@@ -7,6 +7,7 @@ int main(int argc, char * args[])
 	while (Window.GameShouldRun())
 	{
 		Window.ProcessInput();
+		Window.PrepareFrame();
 
 		// update
 

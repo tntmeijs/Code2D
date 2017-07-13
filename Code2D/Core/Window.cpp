@@ -72,6 +72,11 @@ namespace Code2D
 		glfwPollEvents();
 	}
 
+	void Window::PrepareFrame() const
+	{
+		glClear(GL_COLOR_BUFFER_BIT);
+	}
+
 	void Window::ShowFrame() const
 	{
 		glfwSwapBuffers(GameWindow);

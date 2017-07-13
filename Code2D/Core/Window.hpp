@@ -14,6 +14,7 @@ namespace Code2D
 
 		bool GameShouldRun() const;
 		void ProcessInput() const;
+		void PrepareFrame() const;
 		void ShowFrame() const;
 
 	private:
