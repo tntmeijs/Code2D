@@ -14,6 +14,9 @@ as if it would make using the engine much more complicated.
 
 #include "../ComponentInterface.hpp"
 
+#include "glad/glad.h"
+#include "glm/vec2.hpp"
+
 ///#include "glad/glad.h"
 
 namespace Code2D
@@ -23,10 +26,13 @@ namespace Code2D
 		class Sprite : public ComponentInterface
 		{
 		public:
+			void Create(glm::vec2 Position = glm::vec2(0.0f, 0.0f),
+						glm::vec2 Size = glm::vec2(0.0f, 0.0f));
 
-		private:
+		// TODO: make private when rendering a rectangle works
+		//private:
 			// OpenGL buffers
-			///GLuint VAO, VBO, EBO;
+			GLuint VAO, VBO, EBO;
 		};
 	}
 }
