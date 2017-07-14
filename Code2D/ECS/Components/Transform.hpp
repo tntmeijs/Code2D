@@ -21,8 +21,6 @@ namespace Code2D
 		public:
 			Transform();
 
-			void Update() {}
-
 			void SetPosition(float x, float y);
 
 			glm::vec2 Position;

@@ -23,7 +23,6 @@ namespace Code2D
 		class Sprite : public ComponentInterface
 		{
 		public:
-			void Update();
 
 		private:
 			// OpenGL buffers

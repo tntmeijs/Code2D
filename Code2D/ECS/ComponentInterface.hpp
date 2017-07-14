@@ -9,8 +9,6 @@ namespace Code2D
 		{
 		public:
 			virtual ~ComponentInterface() {}
-
-			virtual void Update() = 0;
 		};
 	}
 }
