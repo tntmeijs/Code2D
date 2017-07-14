@@ -3,6 +3,7 @@
 int main(int argc, char * args[])
 {
 	Code2D::Window Window;
+	Window.Create();
 
 	while (Window.GameShouldRun())
 	{

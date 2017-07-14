@@ -9,9 +9,10 @@ namespace Code2D
 	class Window
 	{
 	public:
-		Window(bool bFullscreen = false, short WindowWidth = 1280, short WindowHeight = 720, const char * Title = "Powered by Code2D!");
+		Window();
 		~Window();
 
+		void Create(bool bFullscreen = false, short WindowWidth = 1280, short WindowHeight = 720, const char * Title = "Powered by Code2D!");
 		bool GameShouldRun() const;
 		void ProcessInput() const;
 		void PrepareFrame() const;

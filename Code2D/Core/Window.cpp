@@ -4,7 +4,17 @@
 
 namespace Code2D
 {
-	Window::Window(bool bFullscreen, short WindowWidth, short WindowHeight, const char * Title)
+	Window::Window()
+	{
+	}
+
+	Window::~Window()
+	{
+		glfwDestroyWindow(GameWindow);
+		glfwTerminate();
+	}
+
+	void Window::Create(bool bFullscreen, short WindowWidth, short WindowHeight, const char * Title)
 	{
 		this->WindowWidth = WindowWidth;
 		this->WindowHeight = WindowHeight;
@@ -54,12 +64,6 @@ namespace Code2D
 		glfwGetFramebufferSize(GameWindow, &Width, &Height);
 		glViewport(0, 0, Width, Height);
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-	}
-
-	Window::~Window()
-	{
-		glfwDestroyWindow(GameWindow);
-		glfwTerminate();
 	}
 
 	bool Window::GameShouldRun() const
