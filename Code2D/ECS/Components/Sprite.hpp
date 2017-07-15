@@ -18,8 +18,6 @@ as if it would make using the engine much more complicated.
 #include "glad/glad.h"
 #include "glm/vec2.hpp"
 
-///#include "glad/glad.h"
-
 namespace Code2D
 {
 	namespace Component
