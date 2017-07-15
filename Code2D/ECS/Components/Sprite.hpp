@@ -13,6 +13,7 @@ as if it would make using the engine much more complicated.
 #define SPRITE_HPP
 
 #include "../ComponentInterface.hpp"
+#include "../../Core/Shader.hpp"
 
 #include "glad/glad.h"
 #include "glm/vec2.hpp"
@@ -29,8 +30,10 @@ namespace Code2D
 			void Create(glm::vec2 Position = glm::vec2(0.0f, 0.0f),
 						glm::vec2 Size = glm::vec2(0.0f, 0.0f));
 
-		// TODO: make private when rendering a rectangle works
-		//private:
+			// Returns the VAO
+			GLuint Get();
+
+		private:
 			// OpenGL buffers
 			GLuint VAO, VBO, EBO;
 		};

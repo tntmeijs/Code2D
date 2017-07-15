@@ -7,7 +7,6 @@ namespace Code2D
 	{
 		void Sprite::Create(glm::vec2 Position, glm::vec2 Size)
 		{
-			// TODO: make a proper create function, this is just to test rendering
 			std::vector<GLfloat> VertexData =
 			{
 				0.0f, 0.0f,
@@ -44,6 +43,11 @@ namespace Code2D
 			glBindVertexArray(0);
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		}
+
+		GLuint Sprite::Get()
+		{
+			return VAO;
 		}
 	}
 }

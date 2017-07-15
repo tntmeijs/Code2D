@@ -28,7 +28,7 @@ int main(int argc, char * args[])
 		
 		// render
 		glUseProgram(TestShader.Get());
-		glBindVertexArray(Sprite->VAO);
+		glBindVertexArray(Sprite->Get());
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
 		glBindVertexArray(0);
 		glUseProgram(0);
