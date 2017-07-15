@@ -5,6 +5,15 @@ namespace Code2D
 {
 	namespace Component
 	{
+		Sprite::Sprite()
+		{
+			// No custom shader by default
+			PersonalShader = nullptr;
+
+			// Place the sprite on the default z-layer
+			LayerZ = 0;
+		}
+
 		void Sprite::Create(glm::vec2 Position, glm::vec2 Size)
 		{
 			std::vector<GLfloat> VertexData =

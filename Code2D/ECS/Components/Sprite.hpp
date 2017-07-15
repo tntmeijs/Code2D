@@ -27,11 +27,16 @@ namespace Code2D
 		class Sprite : public ComponentInterface
 		{
 		public:
+			Sprite();
 			void Create(glm::vec2 Position = glm::vec2(0.0f, 0.0f),
 						glm::vec2 Size = glm::vec2(0.0f, 0.0f));
 
 			// Returns the VAO
 			GLuint Get();
+
+			Shader * PersonalShader;
+
+			GLint LayerZ;
 
 		private:
 			// OpenGL buffers
