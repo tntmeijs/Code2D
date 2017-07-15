@@ -1,8 +1,8 @@
 #version 330 core
 
-out vec4 FragColor;
+in vec4 DebugColor;
 
 void main()
 {
-    FragColor = vec4(1.0, 0.5, 1.0, 1.0);
+    gl_FragColor = DebugColor;
 }
