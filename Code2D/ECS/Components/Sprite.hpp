@@ -29,10 +29,8 @@ namespace Code2D
 			void Create(glm::vec2 Position = glm::vec2(0.0f, 0.0f),
 						glm::vec2 Size = glm::vec2(0.0f, 0.0f));
 
-			// Returns the VAO
-			GLuint Get();
-
-		private:
+		// TODO: make private when rendering a rectangle works
+		//private:
 			// OpenGL buffers
 			GLuint VAO, VBO, EBO;
 		};

@@ -7,14 +7,13 @@ namespace Code2D
 	{
 		void Sprite::Create(glm::vec2 Position, glm::vec2 Size)
 		{
-			// We create a small rectangle with its origin in the top-left corner
-			// The size is 1x1, so we scale it up / down using the scale matrix (see Transform component)
+			// TODO: make a proper create function, this is just to test rendering
 			std::vector<GLfloat> VertexData =
 			{
-				0.0f, 0.0f,
-				0.0f, 1.0f,
-				1.0f, 1.0f,
-				1.0f, 0.0f
+				-0.5f, 0.5f, 0.0f,
+				-0.5f, -0.5f, 0.0f,
+				0.5f, -0.5f, 0.0f,
+				0.5f, 0.5f, 0.0f
 			};
 
 			std::vector<GLushort> IndexData =
@@ -35,7 +34,7 @@ namespace Code2D
 
 			// Vertex data
 			glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * VertexData.size(), VertexData.data(), GL_DYNAMIC_DRAW);
-			glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 2.0f, reinterpret_cast<GLvoid*>(0));
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 3.0f, reinterpret_cast<GLvoid*>(0));
 			glEnableVertexAttribArray(0);
 
 			// Index data
@@ -45,11 +44,6 @@ namespace Code2D
 			glBindVertexArray(0);
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-		}
-
-		GLuint Sprite::Get()
-		{
-			return VAO;
 		}
 	}
 }
