@@ -64,6 +64,8 @@ namespace Code2D
 		glfwGetFramebufferSize(GameWindow, &Width, &Height);
 		glViewport(0, 0, Width, Height);
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 
 	bool Window::GameShouldRun() const
