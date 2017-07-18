@@ -1,6 +1,8 @@
 #include "Texture.hpp"
 #include "stb_image.h"
 
+#include <iostream>
+
 namespace Code2D
 {
 	Texture::Texture()
@@ -18,9 +20,10 @@ namespace Code2D
 
 		// Want the retro pixel look for sprites
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-		glGenerateMipmap(GL_TEXTURE_2D);
+		// TODO: Enable this line once we have implemented the orthogonal camera, as it will flip our sprite!
+		//stbi_set_flip_vertically_on_load(true);
 
 		// Loading the image data
 		int ImageWidth, ImageHeight, ImageColorChannels;
@@ -28,35 +31,23 @@ namespace Code2D
 													&ImageWidth,
 													&ImageHeight,
 													&ImageColorChannels,
-													STBI_rgb_alpha);
+													4); // Force alpha channel
 
-		if (ImageColorChannels == STBI_rgb_alpha)
+		if (!ImageByteData)
 		{
-			// Use the alpha channel (RGBA)
-			glTexImage2D(	GL_TEXTURE_2D,
-							0,
-							GL_RGBA,
-							ImageWidth,
-							ImageHeight,
-							0,
-							GL_RGBA,
-							GL_UNSIGNED_BYTE,
-							ImageByteData);
+			std::printf("Could not load %s!\n", PathToImage);
+			return;
 		}
-		else
-		{
-			// No alpha channel available, only RGB
-			glTexImage2D(	GL_TEXTURE_2D,
-							0,
-							GL_RGB,
-							ImageWidth,
-							ImageHeight,
-							0,
-							ImageColorChannels,
-							GL_UNSIGNED_BYTE,
-							ImageByteData);
-		}
-		
+
+		glTexImage2D(	GL_TEXTURE_2D,
+						0,
+						GL_RGBA,
+						ImageWidth,
+						ImageHeight,
+						0,
+						GL_RGBA,
+						GL_UNSIGNED_BYTE,
+						ImageByteData);
 
 		// Image data is no longer needed, because we have already created a texture!
 		stbi_image_free(ImageByteData);

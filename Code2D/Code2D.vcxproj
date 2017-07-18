@@ -155,9 +155,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\ThirdParty\src\glad\src\glad.c" />
+    <ClCompile Include="..\ThirdParty\src\stb_image.c" />
     <ClCompile Include="Core\Input.cpp" />
     <ClCompile Include="Core\Renderer2D.cpp" />
     <ClCompile Include="Core\Shader.cpp" />
+    <ClCompile Include="Core\Texture.cpp" />
     <ClCompile Include="Core\Window.cpp" />
     <ClCompile Include="Demo\Main.cpp" />
     <ClCompile Include="ECS\Components.cpp" />
@@ -168,6 +170,7 @@
     <ClInclude Include="Core\Input.hpp" />
     <ClInclude Include="Core\Renderer2D.hpp" />
     <ClInclude Include="Core\Shader.hpp" />
+    <ClInclude Include="Core\Texture.hpp" />
     <ClInclude Include="Core\Window.hpp" />
     <ClInclude Include="ECS\ComponentInterface.hpp" />
     <ClInclude Include="ECS\Components.hpp" />

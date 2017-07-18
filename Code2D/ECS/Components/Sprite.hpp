@@ -14,6 +14,7 @@ as if it would make using the engine much more complicated.
 
 #include "../ComponentInterface.hpp"
 #include "../../Core/Shader.hpp"
+#include "../../Core/Texture.hpp"
 
 #include "glad/glad.h"
 #include "glm/vec2.hpp"
@@ -26,8 +27,13 @@ namespace Code2D
 		{
 		public:
 			Sprite();
-			void Create(glm::vec2 Position = glm::vec2(0.0f, 0.0f),
+			~Sprite();
+
+			void Create(const char * PathToTexture,
+						glm::vec2 Position = glm::vec2(0.0f, 0.0f),
 						glm::vec2 Size = glm::vec2(0.0f, 0.0f));
+
+			Texture * SpriteTexture;
 
 			// Returns the VAO
 			GLuint Get();
