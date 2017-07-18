@@ -1,8 +1,8 @@
 #include "Sprite.hpp"
 #include <vector>
 
-const GLuint STRIDE = 4;
-const GLuint TEXTURE_UV_OFFSET = 2;
+constexpr GLuint STRIDE = 4;
+constexpr GLuint TEXTURE_UV_OFFSET = 2;
 
 namespace Code2D
 {

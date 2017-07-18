@@ -2,6 +2,8 @@
 #include "../ECS/Components/Sprite.hpp"
 #include "../ECS/Components/Transform.hpp"
 
+constexpr GLuint NUM_SPRITE_VERTICES = 6;
+
 namespace Code2D
 {
 	void Renderer2D::Initialize()
@@ -41,9 +43,7 @@ namespace Code2D
 
 			// VAO of the current sprite
 			glBindVertexArray(Itr->Components.GetComponent<Component::Sprite>()->Get());
-
-			// The magic number does not matter, because EVERY sprite will have 6 vertices
-			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, nullptr);
+			glDrawElements(GL_TRIANGLES, NUM_SPRITE_VERTICES, GL_UNSIGNED_SHORT, nullptr);
 
 			glBindVertexArray(0);
 			glBindTexture(GL_TEXTURE_2D, 0);
