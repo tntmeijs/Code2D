@@ -34,7 +34,7 @@ namespace Code2D
 
 			glUseProgram(ShaderProgramToUse);
 
-			// This is our Sampler2D
+			// This is our sampler2D
 			glUniform1i(glGetUniformLocation(ShaderProgramToUse, "u_Texture"), 0);
 
 			// Only using one texture, but activating Texture0 to be safe :)
