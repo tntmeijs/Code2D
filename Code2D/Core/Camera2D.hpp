@@ -1,13 +1,28 @@
 #ifndef CAMERA_2D_HPP
 #define CAMERA_2D_HPP
 
+#include "glad/glad.h"
+#include "glm/vec2.hpp"
+#include "glm/mat4x4.hpp"
+
 namespace Code2D
 {
 	class Camera2D
 	{
 	public:
+		void Create(GLushort HorizontalResolution = 1280,
+					GLushort VerticalResolution = 720);
+
+		glm::mat4 CalculateProjectionViewMatrix() const;
+
+		// Camera looks at this!
+		glm::vec2 Center;
+
+		// TODO: rotation on the z-axis
 
 	private:
+		glm::mat4 ProjectionMatrix;
+		glm::mat4 ViewMatrix;
 	};
 }
 
