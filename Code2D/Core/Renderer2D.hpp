@@ -5,6 +5,7 @@
 
 #include "glad/glad.h"
 #include "Shader.hpp"
+#include "Camera2D.hpp"
 #include "../ECS/GameObject.hpp"
 
 namespace Code2D
@@ -16,7 +17,7 @@ namespace Code2D
 		void SortLayerDepths();
 
 		// Assumes that the game objects have been sorted by layer properly!
-		void Render();
+		void Render(Camera2D * CameraToRenderWith);
 		void AddGameObject(GameObject * NewObject);
 
 	private:

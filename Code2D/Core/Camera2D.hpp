@@ -10,10 +10,10 @@ namespace Code2D
 	class Camera2D
 	{
 	public:
-		void Create(GLushort HorizontalResolution = 1280,
-					GLushort VerticalResolution = 720);
+		void Create(GLfloat HorizontalResolution = 1280.0f,
+					GLfloat VerticalResolution = 720.0f);
 
-		glm::mat4 CalculateProjectionViewMatrix() const;
+		glm::mat4 CalculateAndGetProjectionViewMatrix() const;
 
 		// Camera looks at this!
 		glm::vec2 Center;

@@ -33,10 +33,10 @@ namespace Code2D
 			std::vector<GLfloat> VertexData =
 			{
 				// Vertices			// Texture coordinates (UV)
-				0.0f, 0.0f,			0.0f, 1.0f,
-				0.0f, 1.0f,			0.0f, 0.0f,
-				1.0f, 1.0f,			1.0f, 0.0f,
-				1.0f, 0.0f,			1.0f, 1.0f
+				 0.0f,  0.0f,		0.0f, 1.0f,
+				 0.0f, -1.0f,		0.0f, 0.0f,
+				-1.0f, -1.0f,		1.0f, 0.0f,
+				-1.0f,  0.0f,		1.0f, 1.0f
 			};
 
 			std::vector<GLushort> IndexData =

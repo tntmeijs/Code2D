@@ -1,4 +1,5 @@
 #include "Renderer2D.hpp"
+#include "glm/mat4x4.hpp"
 #include "../ECS/Components/Sprite.hpp"
 #include "../ECS/Components/Transform.hpp"
 
@@ -16,7 +17,7 @@ namespace Code2D
 	{
 	}
 
-	void Renderer2D::Render()
+	void Renderer2D::Render(Camera2D * CameraToRenderWith)
 	{
 		GLuint ShaderProgramToUse;
 
@@ -33,6 +34,10 @@ namespace Code2D
 			}
 
 			glUseProgram(ShaderProgramToUse);
+
+			// TODO: sprite model matrix calculations
+			glm::mat4 MVP = CameraToRenderWith->CalculateAndGetProjectionViewMatrix();
+			glUniformMatrix4fv(glGetUniformLocation(ShaderProgramToUse, "u_MVP"), 1, GL_FALSE, &MVP[0][0]);
 
 			// This is our sampler2D
 			glUniform1i(glGetUniformLocation(ShaderProgramToUse, "u_Texture"), 0);
