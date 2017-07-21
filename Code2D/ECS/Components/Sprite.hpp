@@ -19,6 +19,14 @@ as if it would make using the engine much more complicated.
 #include "glad/glad.h"
 #include "glm/vec2.hpp"
 
+/*
+Every sprite contains a texture for now, this might change later on
+during development, though...
+
+When using a sprite, keep in mind that the center of the sprite is the
+default origin!
+*/
+
 namespace Code2D
 {
 	namespace Component

@@ -9,6 +9,7 @@ there might be cases in which it is not needed (e.g. managers)
 
 #include "../ComponentInterface.hpp"
 
+#include "glad/glad.h"
 #include "glm/vec2.hpp"
 #include "glm/mat4x4.hpp"
 
@@ -21,14 +22,16 @@ namespace Code2D
 		public:
 			Transform();
 
-			void SetPosition(float x, float y);
+			glm::mat4 CalculateAndGetModelMatrix();
+			void SetPosition(GLfloat x, GLfloat y);
+			void SetScale(GLfloat x, GLfloat y);
 
 			glm::vec2 Position;
 			glm::vec2 Size;
+			glm::vec2 Scale;
 
-			float RotationZ;
-
-		private:
+			// In degrees
+			GLfloat RotationZ;
 		};
 	}
 }

@@ -32,11 +32,11 @@ namespace Code2D
 
 			std::vector<GLfloat> VertexData =
 			{
-				// Vertices			// Texture coordinates (UV)
-				 0.0f,  0.0f,		0.0f, 1.0f,
-				 0.0f, -1.0f,		0.0f, 0.0f,
-				-1.0f, -1.0f,		1.0f, 0.0f,
-				-1.0f,  0.0f,		1.0f, 1.0f
+				// Vertices		// Texture coordinates (UV)
+				-0.5f,  0.5f,	0.0f, 1.0f,
+				 0.5f,  0.5f,	1.0f, 1.0f,
+				 0.5f, -0.5f,	1.0f, 0.0f,
+				-0.5f, -0.5f,	0.0f, 0.0f
 			};
 
 			std::vector<GLushort> IndexData =
@@ -55,7 +55,7 @@ namespace Code2D
 			glBindBuffer(GL_ARRAY_BUFFER, VBO);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
-			// Vertex data
+			// Vertex data (expect this to change often)
 			glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * VertexData.size(), VertexData.data(), GL_DYNAMIC_DRAW);
 
 			// Attribute pointers
@@ -65,7 +65,7 @@ namespace Code2D
 			glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * STRIDE, reinterpret_cast<GLvoid*>(sizeof(GLfloat) * TEXTURE_UV_OFFSET));
 			glEnableVertexAttribArray(1);
 
-			// Index data
+			// Index data (will never change)
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLushort) * IndexData.size(), IndexData.data(), GL_STATIC_DRAW);
 
 			// Unbind buffers

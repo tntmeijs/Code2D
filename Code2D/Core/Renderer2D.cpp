@@ -35,8 +35,7 @@ namespace Code2D
 
 			glUseProgram(ShaderProgramToUse);
 
-			// TODO: sprite model matrix calculations
-			glm::mat4 MVP = CameraToRenderWith->CalculateAndGetProjectionViewMatrix();
+			glm::mat4 MVP = CameraToRenderWith->CalculateAndGetProjectionViewMatrix() * Itr->Components.GetComponent<Component::Transform>()->CalculateAndGetModelMatrix();
 			glUniformMatrix4fv(glGetUniformLocation(ShaderProgramToUse, "u_MVP"), 1, GL_FALSE, &MVP[0][0]);
 
 			// This is our sampler2D
