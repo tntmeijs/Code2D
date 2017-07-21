@@ -17,7 +17,7 @@ namespace Code2D
 					short WindowHeight = 720,
 					const char * Title = "Powered by Code2D!");
 		bool GameShouldRun() const;
-		void ProcessInput() const;
+		void QueryInput() const;
 		void PrepareFrame() const;
 		void ShowFrame() const;
 

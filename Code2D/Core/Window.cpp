@@ -74,7 +74,7 @@ namespace Code2D
 		return !glfwWindowShouldClose(GameWindow);
 	}
 
-	void Window::ProcessInput() const
+	void Window::QueryInput() const
 	{
 		glfwPollEvents();
 	}

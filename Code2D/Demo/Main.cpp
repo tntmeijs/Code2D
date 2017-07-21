@@ -1,6 +1,7 @@
 #include "../Core/Window.hpp"
 #include "../Core/Renderer2D.hpp"
 #include "../Core/Camera2D.hpp"
+#include "../Core/Input.hpp"
 #include "../ECS/GameObject.hpp"
 #include "../ECS/Components/Sprite.hpp"
 #include "../ECS/Components/Transform.hpp"
@@ -31,13 +32,26 @@ int main(int argc, char * args[])
 
 	Renderer.AddGameObject(DemoObject);
 
+	// Bind a key to a name (makes dynamic key mapping easier)
+	Code2D::Input::BindKey("testkey", Code2D::Input::KEY::G);
+
 	while (Window.GameShouldRun())
 	{
-		Window.ProcessInput();
+		Window.QueryInput();
+		// Input class demonstration
+		if (Code2D::Input::KeyPressed("testkey"))
+		{
+			i += 0.05f;
+			std::printf("PRESSED");
+		}
+		else
+		{
+			std::printf("RELEASED");
+		}
+
 		Window.PrepareFrame();
 
 		// Transform component demonstration
-		i += 0.05f;
 		Transform->SetPosition(640.0f, 360.0f);
 		Transform->RotationZ = std::sin(i) * 40.0f;
 		Transform->Scale.x = 1.25f;
