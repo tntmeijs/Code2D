@@ -14,7 +14,10 @@ namespace Code2D
 		glfwTerminate();
 	}
 
-	void Window::Create(bool bFullscreen, short WindowWidth, short WindowHeight, const char * Title)
+	void Window::Create(int WindowWidth,
+						int WindowHeight,
+						const char * Title,
+						bool bFullscreen)
 	{
 		this->WindowWidth = WindowWidth;
 		this->WindowHeight = WindowHeight;
@@ -87,6 +90,24 @@ namespace Code2D
 	void Window::ShowFrame() const
 	{
 		glfwSwapBuffers(GameWindow);
+	}
+
+	void Window::SetCursorVisibility(bool Visible)
+	{
+		if (Visible)
+		{
+			glfwSetInputMode(GameWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		}
+		else
+		{
+			glfwSetInputMode(GameWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+		}
+	}
+
+	void Window::Stop()
+	{
+		glfwDestroyWindow(GameWindow);
+		glfwTerminate();
 	}
 
 	void Window::ErrorCallback(int Error, const char * Description)
