@@ -12,13 +12,16 @@ namespace Code2D
 	public:
 		// Gets called from the GLFW callback in the Window class
 		static void KeyCallback(GLFWwindow * Window, int Key, int Scancode, int Action, int Mods);
-		static void BindKey(const char * Name, int Key);
-		static bool KeyPressed(const char * name);
-		static bool KeyReleased(const char * name);
+		static void BindKey(const char * Name, int Key, bool DefaultState = false);
+		static bool KeyPressed(const char * Name);
+		static bool KeyReleased(const char * Name);
+
+		// Makes sure to delete all pointers in the map
+		static void Stop();
 
 		// All keys from the GLFW3 header
 		// Keys are copied from the GLFW header
-		static enum KEY
+		enum KEY
 		{
 			UNKNOWN = -1,
 
@@ -157,16 +160,21 @@ namespace Code2D
 		};
 
 	private:
-		static std::map<const char *, int> KeyBindings;
+		struct KeyData
+		{
+			KeyData(int Key, bool State)
+			{
+				this->Key = Key;
+				this->State = State;
+			}
 
-		// Returns -1 is the key is not found in the key binding map
-		static int GetKeyByName(const char * name);
+			int Key;
+			bool State;
+		};
 
-		// Storage for the callback function
-		static int KeyFromCallback;
-		static int ScancodeFromCallback;
-		static int ActionFromCallback;
-		static int ModsFromCallback;
+		static bool GetKeyStateByName(const char * Name);
+
+		static std::map<const char *, KeyData *> KeyBindings;
 	};
 }
 

@@ -1,65 +1,93 @@
 #include "Input.hpp"
 
-std::map<const char *, int> Code2D::Input::KeyBindings;
-
-int Code2D::Input::KeyFromCallback;
-int Code2D::Input::ScancodeFromCallback;
-int Code2D::Input::ActionFromCallback;
-int Code2D::Input::ModsFromCallback;
+std::map<const char *, Code2D::Input::KeyData *> Code2D::Input::KeyBindings;
 
 namespace Code2D
 {
 	void Input::KeyCallback(GLFWwindow * Window, int Key, int Scancode, int Action, int Mods)
 	{
-		KeyFromCallback = Key;
-		ScancodeFromCallback = Scancode;
-		ActionFromCallback = Action;
-		ModsFromCallback = Mods;
-	}
-
-	void Input::BindKey(const char * Name, int Key)
-	{
-		KeyBindings[Name] = Key;
-	}
-
-	bool Input::KeyPressed(const char * name)
-	{
-		if (GetKeyByName(name) == KeyFromCallback &&
-			ActionFromCallback == GLFW_PRESS)
+		// Check if the key that is being pressed is a keybinding in the engine
+		if (Action == GLFW_PRESS)
 		{
-			return true;
+			// If so, set the key state to true (pressed)
+			for (auto Itr : KeyBindings)
+			{
+				if (Itr.second->Key == Key)
+				{
+					Itr.second->State = true;
+				}
+			}
 		}
-		else
+		
+		if (Action == GLFW_RELEASE)
 		{
-			return false;
-		}
-	}
-
-	bool Input::KeyReleased(const char * name)
-	{
-		if (GetKeyByName(name) == KeyFromCallback &&
-			ActionFromCallback == GLFW_RELEASE)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
+			// Else, set the key state to false (released)
+			for (auto Itr : KeyBindings)
+			{
+				if (Itr.second->Key == Key)
+				{
+					Itr.second->State = false;
+				}
+			}
 		}
 	}
 
-	int Input::GetKeyByName(const char * name)
+	void Input::BindKey(const char * Name, int Key, bool DefaultState)
 	{
-		auto Itr = KeyBindings.find(name);
+		for (auto Itr : KeyBindings)
+		{
+			if (Itr.second->Key == Key)
+			{
+				if (Itr.first == Name)
+				{
+					// Name and key are already in the map (trying to add a duplicate)!
+					std::printf("Whoops, '%s' already exists as a keybind, are you are tying to add a duplicate?\n", Name);
+					return;
+				}
+
+				// This key already exists in the map!
+				std::printf("Whoops, the key already exists as a keybinding to the name '%s'!\n", Itr.first);
+				return;
+			}
+		}
+
+		// Add the new keybinding to the map (overwrites any existing entries)
+		KeyBindings[Name] = new KeyData(Key, DefaultState);
+	}
+
+	bool Input::KeyPressed(const char * Name)
+	{
+		return GetKeyStateByName(Name);
+	}
+
+	bool Input::KeyReleased(const char * Name)
+	{
+		return !GetKeyStateByName(Name);
+	}
+
+	void Input::Stop()
+	{
+		// Loop through all key bindings and delete the pointers
+		for (auto Itr : KeyBindings)
+		{
+			delete Itr.second;
+		}
+
+		KeyBindings.clear();
+	}
+
+	bool Input::GetKeyStateByName(const char * Name)
+	{
+		auto Itr = KeyBindings.find(Name);
 
 		if (Itr != KeyBindings.end())
 		{
-			// Found the requested entry!
-			return Itr->second;
+			// Found the entry!
+			return Itr->second->State;
 		}
-		else
-		{
-			return -1;
-		}
+
+		// Could not find the key!
+		std::printf("Whoops, the key name '%s' does not seem to exist!\n", Name);
+		return false;
 	}
 }
