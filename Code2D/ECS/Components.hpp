@@ -41,6 +41,7 @@ namespace Code2D
 		else
 		{
 			// Could not find the requested components
+			std::printf("No %s component found!\n", typeid(T).name());
 			return nullptr;
 		}
 	}
