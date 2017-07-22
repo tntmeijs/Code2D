@@ -73,7 +73,7 @@ int main(int argc, char * args[])
 
 	// Cleanup after ourselves
 	Code2D::Input::Stop();
-	// TODO: window cleanup
+	Window.Stop();
 
 	return 0;
 }
