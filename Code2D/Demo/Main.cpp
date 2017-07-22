@@ -10,19 +10,24 @@
 
 int main(int argc, char * args[])
 {
+	// Create a window
 	Code2D::Window Window;
 	Window.Create();
 
+	// Setup the renderer
 	Code2D::Renderer2D Renderer;
 	Renderer.Initialize();
 
+	// Add a camera
 	Code2D::Camera2D MainCamera;
 	MainCamera.Create();
 
+	// Instantiate a game object with a couple of components
 	Code2D::GameObject * DemoObject = new Code2D::GameObject;
 	DemoObject->Components.AddComponent(new Code2D::Component::Sprite);
 	DemoObject->Components.AddComponent(new Code2D::Component::Transform);
 
+	// Show the retrieval of components from a game object
 	Code2D::Component::Sprite * Sprite = DemoObject->Components.GetComponent<Code2D::Component::Sprite>();
 	Code2D::Component::Transform * Transform = DemoObject->Components.GetComponent<Code2D::Component::Transform>();
 
@@ -33,22 +38,24 @@ int main(int argc, char * args[])
 	Renderer.AddGameObject(DemoObject);
 
 	// Bind a key to a name (makes dynamic key mapping easier)
-	Code2D::Input::BindKey("testkey", Code2D::Input::KEY::G);
+	Code2D::Input::BindKey("increment", Code2D::Input::KEY::UP);
+	Code2D::Input::BindKey("decrement", Code2D::Input::KEY::DOWN);
 
 	while (Window.GameShouldRun())
 	{
 		Window.QueryInput();
-		// Input class demonstration
-		if (Code2D::Input::KeyPressed("testkey"))
+		// Input class demonstration (press the 'up' arrow to increment, and the 'down' arrow to decrement)
+		if (Code2D::Input::KeyPressed("increment"))
 		{
-			i += 0.05f;
-			std::printf("PRESSED");
-		}
-		else
-		{
-			std::printf("RELEASED");
+			i += 0.01f;
 		}
 
+		if (Code2D::Input::KeyPressed("decrement"))
+		{
+			i -= 0.01f;
+		}
+
+		// Makes a call to the glClear function
 		Window.PrepareFrame();
 
 		// Transform component demonstration
@@ -63,6 +70,10 @@ int main(int argc, char * args[])
 	}
 
 	delete DemoObject;
+
+	// Cleanup after ourselves
+	Code2D::Input::Stop();
+	// TODO: window cleanup
 
 	return 0;
 }
