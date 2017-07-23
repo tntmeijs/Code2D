@@ -4,7 +4,6 @@
 #include "../Core/Input.hpp"
 #include "../ECS/GameObject.hpp"
 #include "../ECS/Components/Sprite.hpp"
-#include "../ECS/Components/Transform.hpp"
 
 #include <cmath>
 
@@ -25,11 +24,9 @@ int main(int argc, char * args[])
 	// Instantiate a game object with a couple of components
 	Code2D::GameObject * DemoObject = new Code2D::GameObject;
 	DemoObject->Components.AddComponent(new Code2D::Component::Sprite);
-	DemoObject->Components.AddComponent(new Code2D::Component::Transform);
 
 	// Show the retrieval of components from a game object
 	Code2D::Component::Sprite * Sprite = DemoObject->Components.GetComponent<Code2D::Component::Sprite>();
-	Code2D::Component::Transform * Transform = DemoObject->Components.GetComponent<Code2D::Component::Transform>();
 
 	Sprite->Create("./Demo/Assets/Sprites/sprite_01.png");
 
@@ -59,9 +56,9 @@ int main(int argc, char * args[])
 		Window.PrepareFrame();
 
 		// Transform component demonstration
-		Transform->SetPosition(640.0f, 360.0f);
-		Transform->RotationZ = std::sin(i) * 40.0f;
-		Transform->Scale.x = 1.25f;
+		DemoObject->Transform.SetPosition(640.0f, 360.0f);
+		DemoObject->Transform.RotationZ = std::sin(i) * 40.0f;
+		DemoObject->Transform.Scale.x = 1.25f;
 
 		// Sprite component rendering demonstration
 		Renderer.Render(&MainCamera);

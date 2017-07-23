@@ -1,7 +1,6 @@
 #include "Renderer2D.hpp"
 #include "glm/mat4x4.hpp"
 #include "../ECS/Components/Sprite.hpp"
-#include "../ECS/Components/Transform.hpp"
 
 constexpr GLuint NUM_SPRITE_VERTICES = 6;
 
@@ -35,7 +34,7 @@ namespace Code2D
 
 			glUseProgram(ShaderProgramToUse);
 
-			glm::mat4 MVP = CameraToRenderWith->CalculateAndGetProjectionViewMatrix() * Itr->Components.GetComponent<Component::Transform>()->CalculateAndGetModelMatrix();
+			glm::mat4 MVP = CameraToRenderWith->CalculateAndGetProjectionViewMatrix() * Itr->Transform.CalculateAndGetModelMatrix();
 			glUniformMatrix4fv(glGetUniformLocation(ShaderProgramToUse, "u_MVP"), 1, GL_FALSE, &MVP[0][0]);
 
 			// This is our sampler2D
@@ -57,9 +56,8 @@ namespace Code2D
 
 	void Renderer2D::AddGameObject(GameObject * NewObject)
 	{
-		// We need to have a transform and a sprite when rendering!
-		if (NewObject->Components.GetComponent<Component::Sprite>() != nullptr &&
-			NewObject->Components.GetComponent<Component::Transform>() != nullptr)
+		// We need to have a sprite when rendering!
+		if (NewObject->Components.GetComponent<Component::Sprite>() != nullptr)
 		{
 			RenderableObjects.push_back(NewObject);
 		}
