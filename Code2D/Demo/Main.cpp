@@ -4,6 +4,7 @@
 #include "../Core/Input.hpp"
 #include "../ECS/GameObject.hpp"
 #include "../ECS/Components/Sprite.hpp"
+#include "../ECS/Components/ColliderSAT.hpp"
 
 #include <cmath>
 
@@ -24,9 +25,11 @@ int main(int argc, char * args[])
 	// Instantiate a game object with a couple of components
 	Code2D::GameObject * DemoObject = new Code2D::GameObject;
 	DemoObject->Components.AddComponent(new Code2D::Component::Sprite);
+	DemoObject->Components.AddComponent(new Code2D::Component::ColliderSAT); // Non axis-aligned collisions
 
 	// Show the retrieval of components from a game object
 	Code2D::Component::Sprite * Sprite = DemoObject->Components.GetComponent<Code2D::Component::Sprite>();
+	Code2D::Component::ColliderSAT * Collider = DemoObject->Components.GetComponent<Code2D::Component::ColliderSAT>();
 
 	Sprite->Create("./Demo/Assets/Sprites/sprite_01.png");
 
