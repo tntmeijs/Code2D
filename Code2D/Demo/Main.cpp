@@ -4,7 +4,6 @@
 #include "../Core/Input.hpp"
 #include "../ECS/GameObject.hpp"
 #include "../ECS/Components/Sprite.hpp"
-#include "../ECS/Components/ColliderSAT.hpp"
 
 #include <cmath>
 
@@ -23,48 +22,51 @@ int main(int argc, char * args[])
 	MainCamera.Create();
 
 	// Instantiate a game object with a couple of components
-	Code2D::GameObject * DemoObject = new Code2D::GameObject;
-	DemoObject->Components.AddComponent(new Code2D::Component::Sprite);
-	DemoObject->Components.AddComponent(new Code2D::Component::ColliderSAT); // Non axis-aligned collisions
+	Code2D::GameObject * DemoObject1 = new Code2D::GameObject;
+	DemoObject1->Components.AddComponent(new Code2D::Component::Sprite);
+
+	Code2D::GameObject * DemoObject2 = new Code2D::GameObject;
+	DemoObject2->Components.AddComponent(new Code2D::Component::Sprite);
 
 	// Show the retrieval of components from a game object
-	Code2D::Component::Sprite * Sprite = DemoObject->Components.GetComponent<Code2D::Component::Sprite>();
-	Code2D::Component::ColliderSAT * Collider = DemoObject->Components.GetComponent<Code2D::Component::ColliderSAT>();
+	Code2D::Component::Sprite * Sprite1 = DemoObject1->Components.GetComponent<Code2D::Component::Sprite>();
 
-	Sprite->Create("./Demo/Assets/Sprites/sprite_01.png");
+	Code2D::Component::Sprite * Sprite2 = DemoObject2->Components.GetComponent<Code2D::Component::Sprite>();
 
-	float i = 0.0f;
+	Sprite1->Create("./Demo/Assets/Sprites/sprite_01.png");
+	Sprite2->Create("./Demo/Assets/Sprites/sprite_02.png");
 
-	Renderer.AddGameObject(DemoObject);
+	DemoObject1->Transform.SetPosition(280.0f, 360.0f);
+	DemoObject2->Transform.SetPosition(1000.0f, 360.0f);
 
-	// Bind a key to a name (makes dynamic key mapping easier)
-	Code2D::Input::BindKey("increment", Code2D::Input::KEY::UP);
-	Code2D::Input::BindKey("decrement", Code2D::Input::KEY::DOWN);
-	Code2D::Input::BindKey("new_name", Code2D::Input::KEY::UP); // Overwrite the previous key binding (increment)
+	Code2D::Input::BindKey("GO_1_UP", Code2D::Input::W);
+	Code2D::Input::BindKey("GO_1_DOWN", Code2D::Input::S);
+	Code2D::Input::BindKey("GO_1_LEFT", Code2D::Input::A);
+	Code2D::Input::BindKey("GO_1_RIGHT", Code2D::Input::D);
+	Code2D::Input::BindKey("GO_1_ROTATE_L", Code2D::Input::Q);
+	Code2D::Input::BindKey("GO_1_ROTATE_R", Code2D::Input::E);
+	
+	// Game objects we would like to render:
+	Renderer.AddGameObject(DemoObject1);
+	Renderer.AddGameObject(DemoObject2);
 
 	while (Window.GameShouldRun())
 	{
 		// Fancy way of saying 'glfwPollEvents()'
 		Window.QueryInput();
 
-		// Input class demonstration (press the 'up' arrow to increment, and the 'down' arrow to decrement)
-		if (Code2D::Input::KeyPressed("new_name"))
-		{
-			i += 0.01f;
-		}
-
-		if (Code2D::Input::KeyPressed("decrement"))
-		{
-			i -= 0.01f;
-		}
+		// Game object 1 input handling
+		if (Code2D::Input::KeyPressed("GO_1_UP")) { DemoObject1->Transform.Position.y -= 3.0f; };
+		if (Code2D::Input::KeyPressed("GO_1_DOWN")) { DemoObject1->Transform.Position.y += 3.0f; };
+		if (Code2D::Input::KeyPressed("GO_1_LEFT")) { DemoObject1->Transform.Position.x -= 3.0f; };
+		if (Code2D::Input::KeyPressed("GO_1_RIGHT")) { DemoObject1->Transform.Position.x += 3.0f; };
+		if (Code2D::Input::KeyPressed("GO_1_ROTATE_L")) { DemoObject1->Transform.RotationZ += 2.0f; };
+		if (Code2D::Input::KeyPressed("GO_1_ROTATE_R")) { DemoObject1->Transform.RotationZ -= 2.0f; };
 
 		// Makes a call to the 'glClear()' function
 		Window.PrepareFrame();
 
-		// Transform component demonstration
-		DemoObject->Transform.SetPosition(640.0f, 360.0f);
-		DemoObject->Transform.RotationZ = std::sin(i) * 40.0f;
-		DemoObject->Transform.Scale.x = 1.25f;
+		// update
 
 		// Sprite component rendering demonstration
 		Renderer.Render(&MainCamera);
@@ -72,7 +74,7 @@ int main(int argc, char * args[])
 		Window.ShowFrame();
 	}
 
-	delete DemoObject;
+	delete DemoObject1;
 
 	// Cleanup after ourselves
 	Code2D::Input::Stop();

@@ -164,7 +164,6 @@
     <ClCompile Include="Core\Window.cpp" />
     <ClCompile Include="Demo\Main.cpp" />
     <ClCompile Include="ECS\Components.cpp" />
-    <ClCompile Include="ECS\Components\ColliderSAT.cpp" />
     <ClCompile Include="ECS\Components\Sprite.cpp" />
     <ClCompile Include="ECS\GameObject.cpp" />
   </ItemGroup>
@@ -177,7 +176,6 @@
     <ClInclude Include="Core\Window.hpp" />
     <ClInclude Include="ECS\ComponentInterface.hpp" />
     <ClInclude Include="ECS\Components.hpp" />
-    <ClInclude Include="ECS\Components\ColliderSAT.hpp" />
     <ClInclude Include="ECS\Components\Sprite.hpp" />
     <ClInclude Include="ECS\GameObject.hpp" />
   </ItemGroup>
