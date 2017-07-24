@@ -21,3 +21,4 @@ When I started this project I tried to keep the scope small... Just a very basic
 * Entity Component Systems
 * Collision detection and resolution
 * Dynamic key mapping
+* Separating Axis Theorem
