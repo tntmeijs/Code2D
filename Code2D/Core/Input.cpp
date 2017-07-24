@@ -36,22 +36,45 @@ namespace Code2D
 	{
 		for (auto Itr : KeyBindings)
 		{
+			// Check if the key is a duplicate
+			if (Itr.first == Name && Itr.second->Key == Key)
+			{
+				std::printf("'%s' Already exists as a key binding!\nYou seem to be trying to add a duplicate entry...\n");
+				return;
+			}
+
+			if (Itr.first == Name)
+			{
+				// name exists already, should replace the key
+				KeyBindings[Name]->Key = Key;
+				return;
+			}
+
 			if (Itr.second->Key == Key)
 			{
-				if (Itr.first == Name)
-				{
-					// Name and key are already in the map (trying to add a duplicate)!
-					std::printf("Whoops, '%s' already exists as a keybind, are you are tying to add a duplicate?\n", Name);
-					return;
-				}
+				// Key exists already, so we assume the user wants to overwrite the previous entry
+				std::printf("This key is already bound to '%s'!\nOverwriting '%s' with '%s'...\n", Itr.first, Itr.first, Name);
+				
+				// Erase the current entry (map keys are immutable)
+				delete Itr.second;
+				KeyBindings.erase(Itr.first);
 
-				// This key already exists in the map!
-				std::printf("Whoops, the key already exists as a keybinding to the name '%s'!\n", Itr.first);
+				// Insert the new pair
+				KeyBindings[Name] = new KeyData(Key, DefaultState);
+
+				return;
+			}
+
+			auto ItrResult = KeyBindings.find(Name);
+			if (ItrResult == KeyBindings.end())
+			{
+				// Entry does not exist yet, so add it to the map
+				KeyBindings[Name] = new KeyData(Key, DefaultState);
 				return;
 			}
 		}
 
-		// Add the new keybinding to the map (overwrites any existing entries)
+
 		KeyBindings[Name] = new KeyData(Key, DefaultState);
 	}
 
@@ -87,7 +110,7 @@ namespace Code2D
 		}
 
 		// Could not find the key!
-		std::printf("Whoops, the key name '%s' does not seem to exist!\n", Name);
+		std::printf("Whoops, the key name '%s' does not seem to exist (anymore)!\n", Name);
 		return false;
 	}
 }

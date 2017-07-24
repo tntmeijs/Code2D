@@ -37,12 +37,14 @@ int main(int argc, char * args[])
 	// Bind a key to a name (makes dynamic key mapping easier)
 	Code2D::Input::BindKey("increment", Code2D::Input::KEY::UP);
 	Code2D::Input::BindKey("decrement", Code2D::Input::KEY::DOWN);
+	Code2D::Input::BindKey("new_name", Code2D::Input::KEY::UP); // Overwrite the previous key binding (increment)
 
 	while (Window.GameShouldRun())
 	{
 		Window.QueryInput();
+
 		// Input class demonstration (press the 'up' arrow to increment, and the 'down' arrow to decrement)
-		if (Code2D::Input::KeyPressed("increment"))
+		if (Code2D::Input::KeyPressed("new_name"))
 		{
 			i += 0.01f;
 		}
