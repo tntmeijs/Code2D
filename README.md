@@ -17,9 +17,6 @@ When I started this project I tried to keep the scope small... Just a very basic
 
 **Key learning points:**
 * OpenGL 2D sprite rendering
-* OpenGL batch rendering
-* GLSL shader language
-* Resource management
 * Scene management
 * Entity Component Systems
 * Collision detection and resolution
