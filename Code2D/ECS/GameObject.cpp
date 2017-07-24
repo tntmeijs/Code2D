@@ -3,7 +3,7 @@
 
 namespace Code2D
 {
-	GameObject::Transform::Transform()
+	GameObject::TransformData::TransformData()
 	{
 		Position.x = 0.0f;
 		Position.y = 0.0f;
@@ -17,19 +17,19 @@ namespace Code2D
 		Scale.y = 1.0f;
 	}
 
-	void GameObject::Transform::SetPosition(GLfloat x, GLfloat y)
+	void GameObject::TransformData::SetPosition(GLfloat x, GLfloat y)
 	{
 		Position.x = x;
 		Position.y = y;
 	}
 
-	void GameObject::Transform::SetScale(GLfloat x, GLfloat y)
+	void GameObject::TransformData::SetScale(GLfloat x, GLfloat y)
 	{
 		Scale.x = x;
 		Scale.y = y;
 	}
 
-	glm::mat4 GameObject::Transform::CalculateAndGetModelMatrix()
+	glm::mat4 GameObject::TransformData::CalculateAndGetModelMatrix()
 	{
 		// These matrices are needed to construct the model matrix
 		glm::mat4 TranslationMatrix;

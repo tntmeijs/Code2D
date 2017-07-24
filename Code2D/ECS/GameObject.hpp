@@ -11,10 +11,10 @@ namespace Code2D
 {
 	class GameObject
 	{
-	private:
-		struct Transform
+	public:
+		struct TransformData
 		{
-			Transform();
+			TransformData();
 			glm::mat4 CalculateAndGetModelMatrix();
 			void SetPosition(GLfloat x, GLfloat y);
 			void SetScale(GLfloat x, GLfloat y);
@@ -27,11 +27,10 @@ namespace Code2D
 			GLfloat RotationZ;
 		};
 
-	public:
 		Components Components;
 
 		// Since a transform is very common, it is part of the game object class
-		Transform Transform;
+		TransformData Transform;
 
 	private:
 	};
