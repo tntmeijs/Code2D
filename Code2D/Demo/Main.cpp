@@ -41,6 +41,7 @@ int main(int argc, char * args[])
 
 	while (Window.GameShouldRun())
 	{
+		// Fancy way of saying 'glfwPollEvents()'
 		Window.QueryInput();
 
 		// Input class demonstration (press the 'up' arrow to increment, and the 'down' arrow to decrement)
@@ -54,7 +55,7 @@ int main(int argc, char * args[])
 			i -= 0.01f;
 		}
 
-		// Makes a call to the glClear function
+		// Makes a call to the 'glClear()' function
 		Window.PrepareFrame();
 
 		// Transform component demonstration
