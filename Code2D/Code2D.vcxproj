@@ -156,6 +156,7 @@
   <ItemGroup>
     <ClCompile Include="..\ThirdParty\src\glad\src\glad.c" />
     <ClCompile Include="..\ThirdParty\src\stb_image.c" />
+    <ClCompile Include="Code2D_Engine\Physics\AABB.cpp" />
     <ClCompile Include="Code2D_Engine\Rendering\Camera2D.cpp" />
     <ClCompile Include="Code2D_Engine\Misc\Input.cpp" />
     <ClCompile Include="Code2D_Engine\Rendering\Renderer2D.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Code2D_Engine\ECS\GameObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code2D_Engine\Physics\AABB.hpp" />
     <ClInclude Include="Code2D_Engine\Rendering\Camera2D.hpp" />
     <ClInclude Include="Code2D_Engine\Misc\Input.hpp" />
     <ClInclude Include="Code2D_Engine\Rendering\Renderer2D.hpp" />

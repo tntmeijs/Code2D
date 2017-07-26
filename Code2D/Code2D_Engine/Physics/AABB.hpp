@@ -12,6 +12,7 @@ namespace Code2D
 		class AABB
 		{
 		public:
+			static bool GameObjectsIntersect(const GameObject & ObjectOne, const GameObject & ObjectTwo);
 
 		private:
 		};

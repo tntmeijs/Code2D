@@ -5,6 +5,8 @@
 #include "../Code2D_Engine/ECS/GameObject.hpp"
 #include "../Code2D_Engine/ECS/Components/Sprite.hpp"
 
+#include "../Code2D_Engine/Physics/AABB.hpp"
+
 #include <cmath>
 
 int main(int argc, char * args[])
@@ -37,8 +39,12 @@ int main(int argc, char * args[])
 	Sprite2->Create("./Demo/Assets/Sprites/sprite_02.png");
 
 	DemoObject1->Transform.SetPosition(280.0f, 360.0f);
+	DemoObject1->Transform.Size.x = 50.0f;
+	DemoObject1->Transform.Size.y = 50.0f;
+
 	DemoObject2->Transform.SetPosition(1000.0f, 360.0f);
 
+	// Player one controls
 	Code2D::Input::BindKey("GO_1_UP", Code2D::Input::W);
 	Code2D::Input::BindKey("GO_1_DOWN", Code2D::Input::S);
 	Code2D::Input::BindKey("GO_1_LEFT", Code2D::Input::A);
@@ -67,6 +73,7 @@ int main(int argc, char * args[])
 		Window.PrepareFrame();
 
 		// update
+		std::printf("Collision happening: %i\n", Code2D::Physics::AABB::GameObjectsIntersect(*DemoObject1, *DemoObject2));
 
 		// Sprite component rendering demonstration
 		Renderer.Render(&MainCamera);
@@ -75,6 +82,7 @@ int main(int argc, char * args[])
 	}
 
 	delete DemoObject1;
+	delete DemoObject2;
 
 	// Cleanup after ourselves
 	Code2D::Input::Stop();

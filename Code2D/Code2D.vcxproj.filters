@@ -51,6 +51,9 @@
     <ClCompile Include="Code2D_Engine\Rendering\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Code2D_Engine\Physics\AABB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code2D_Engine\ECS\Components\Sprite.hpp">
@@ -81,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code2D_Engine\Rendering\Texture.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code2D_Engine\Physics\AABB.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
