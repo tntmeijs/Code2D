@@ -39,7 +39,7 @@ namespace Code2D
 			// Check if the key is a duplicate
 			if (Itr.first == Name && Itr.second->Key == Key)
 			{
-				std::printf("'%s' Already exists as a key binding!\nYou seem to be trying to add a duplicate entry...\n");
+				std::printf("'%s' Already exists as a key binding!\nYou seem to be trying to add a duplicate entry...\n", Itr.first);
 				return;
 			}
 

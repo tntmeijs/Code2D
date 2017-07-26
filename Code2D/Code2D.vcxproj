@@ -156,28 +156,28 @@
   <ItemGroup>
     <ClCompile Include="..\ThirdParty\src\glad\src\glad.c" />
     <ClCompile Include="..\ThirdParty\src\stb_image.c" />
-    <ClCompile Include="Core\Camera2D.cpp" />
-    <ClCompile Include="Core\Input.cpp" />
-    <ClCompile Include="Core\Renderer2D.cpp" />
-    <ClCompile Include="Core\Shader.cpp" />
-    <ClCompile Include="Core\Texture.cpp" />
-    <ClCompile Include="Core\Window.cpp" />
+    <ClCompile Include="Code2D_Engine\Rendering\Camera2D.cpp" />
+    <ClCompile Include="Code2D_Engine\Misc\Input.cpp" />
+    <ClCompile Include="Code2D_Engine\Rendering\Renderer2D.cpp" />
+    <ClCompile Include="Code2D_Engine\Rendering\Shader.cpp" />
+    <ClCompile Include="Code2D_Engine\Rendering\Texture.cpp" />
+    <ClCompile Include="Code2D_Engine\Misc\Window.cpp" />
     <ClCompile Include="Demo\Main.cpp" />
-    <ClCompile Include="ECS\Components.cpp" />
-    <ClCompile Include="ECS\Components\Sprite.cpp" />
-    <ClCompile Include="ECS\GameObject.cpp" />
+    <ClCompile Include="Code2D_Engine\ECS\Components.cpp" />
+    <ClCompile Include="Code2D_Engine\ECS\Components\Sprite.cpp" />
+    <ClCompile Include="Code2D_Engine\ECS\GameObject.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core\Camera2D.hpp" />
-    <ClInclude Include="Core\Input.hpp" />
-    <ClInclude Include="Core\Renderer2D.hpp" />
-    <ClInclude Include="Core\Shader.hpp" />
-    <ClInclude Include="Core\Texture.hpp" />
-    <ClInclude Include="Core\Window.hpp" />
-    <ClInclude Include="ECS\ComponentInterface.hpp" />
-    <ClInclude Include="ECS\Components.hpp" />
-    <ClInclude Include="ECS\Components\Sprite.hpp" />
-    <ClInclude Include="ECS\GameObject.hpp" />
+    <ClInclude Include="Code2D_Engine\Rendering\Camera2D.hpp" />
+    <ClInclude Include="Code2D_Engine\Misc\Input.hpp" />
+    <ClInclude Include="Code2D_Engine\Rendering\Renderer2D.hpp" />
+    <ClInclude Include="Code2D_Engine\Rendering\Shader.hpp" />
+    <ClInclude Include="Code2D_Engine\Rendering\Texture.hpp" />
+    <ClInclude Include="Code2D_Engine\Misc\Window.hpp" />
+    <ClInclude Include="Code2D_Engine\ECS\ComponentInterface.hpp" />
+    <ClInclude Include="Code2D_Engine\ECS\Components.hpp" />
+    <ClInclude Include="Code2D_Engine\ECS\Components\Sprite.hpp" />
+    <ClInclude Include="Code2D_Engine\ECS\GameObject.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

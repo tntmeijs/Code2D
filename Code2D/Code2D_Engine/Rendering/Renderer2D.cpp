@@ -8,8 +8,8 @@ namespace Code2D
 {
 	void Renderer2D::Initialize()
 	{
-		DefaultShader.Create("./Core/DefaultShaders/vertex.vsh",
-			"./Core/DefaultShaders/fragment.fsh");
+		DefaultShader.Create(	"./Code2D_Engine/Rendering/DefaultShaders/vertex.vsh",
+								"./Code2D_Engine/Rendering/DefaultShaders/fragment.fsh");
 	}
 
 	void Renderer2D::SortLayerDepths()

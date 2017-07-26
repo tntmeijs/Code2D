@@ -1,9 +1,9 @@
-#include "../Core/Window.hpp"
-#include "../Core/Renderer2D.hpp"
-#include "../Core/Camera2D.hpp"
-#include "../Core/Input.hpp"
-#include "../ECS/GameObject.hpp"
-#include "../ECS/Components/Sprite.hpp"
+#include "../Code2D_Engine/Misc/Window.hpp"
+#include "../Code2D_Engine/Rendering/Renderer2D.hpp"
+#include "../Code2D_Engine/Rendering/Camera2D.hpp"
+#include "../Code2D_Engine/Misc/Input.hpp"
+#include "../Code2D_Engine/ECS/GameObject.hpp"
+#include "../Code2D_Engine/ECS/Components/Sprite.hpp"
 
 #include <cmath>
 

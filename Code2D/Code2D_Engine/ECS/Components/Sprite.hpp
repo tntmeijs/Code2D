@@ -13,8 +13,8 @@ as if it would make using the engine much more complicated.
 #define SPRITE_HPP
 
 #include "../ComponentInterface.hpp"
-#include "../../Core/Shader.hpp"
-#include "../../Core/Texture.hpp"
+#include "../../Rendering/Shader.hpp"
+#include "../../Rendering/Texture.hpp"
 
 #include "glad/glad.h"
 #include "glm/vec2.hpp"

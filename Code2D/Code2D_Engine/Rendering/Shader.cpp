@@ -51,7 +51,7 @@ namespace Code2D
 		else
 		{
 			// Failed to open the file!
-			std::printf("Could not open %s", PathToShaderSource);
+			std::printf("Could not open %s\n", PathToShaderSource);
 
 			return "<ERROR>";
 		}
@@ -78,11 +78,11 @@ namespace Code2D
 
 			if (ShaderType == GL_VERTEX_SHADER)
 			{
-				std::printf("Failed to compile the vertex shader!\nError: %s", Error);
+				std::printf("Failed to compile the vertex shader!\nError: %s\n", Error);
 			}
 			else
 			{
-				std::printf("Failed to compile the fragment shader!\nError: %s", Error);
+				std::printf("Failed to compile the fragment shader!\nError: %s\n", Error);
 			}
 
 			// Exit with failure.
@@ -118,7 +118,7 @@ namespace Code2D
 			GLchar * Error = new GLchar[MaxLength];
 			glGetProgramInfoLog(Program, MaxLength, nullptr, Error);
 
-			std::printf("Failed to create the shader program!\nError: %s", Error);
+			std::printf("Failed to create the shader program!\nError: %s\n", Error);
 
 			//We don't need the program anymore.
 			glDeleteProgram(Program);
