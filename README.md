@@ -1,5 +1,5 @@
 # Code2D
-A simple 2D C++ game-engine
+A simple 2D C++ graphics framework.
 
 ---
 
